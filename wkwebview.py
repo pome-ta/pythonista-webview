@@ -5,7 +5,9 @@ WKWebView - modern webview for Pythonista
 
 __version__ = '1.0'
 
-from objc_util import *
+from objc_util import ObjCClass, on_main_thread, create_objc_class, nsurl
+from objc_util import UIApplication, NSObject, retain_global
+from objc_util import Structure, c_ulong, c_void_p, c_char_p, c_int
 import ui, console, webbrowser
 import queue, weakref, ctypes, functools, time, os, json, re
 from types import SimpleNamespace
@@ -14,15 +16,23 @@ from types import SimpleNamespace
 
 
 class _block_descriptor(Structure):
-  _fields_ = [('reserved', c_ulong), ('size', c_ulong),
-              ('copy_helper', c_void_p), ('dispose_helper',
-                                          c_void_p), ('signature', c_char_p)]
+  _fields_ = [
+    ('reserved', c_ulong),
+    ('size', c_ulong),
+    ('copy_helper', c_void_p),
+    ('dispose_helper', c_void_p),
+    ('signature', c_char_p),
+  ]
 
 
 def _block_literal_fields(*arg_types):
-  return [('isa', c_void_p), (
-    'flags', c_int), ('reserved', c_int), ('invoke', ctypes.CFUNCTYPE(
-      c_void_p, c_void_p, *arg_types)), ('descriptor', _block_descriptor)]
+  return [
+    ('isa', c_void_p),
+    ('flags', c_int),
+    ('reserved', c_int),
+    ('invoke', ctypes.CFUNCTYPE(c_void_p, c_void_p, *arg_types)),
+    ('descriptor', _block_descriptor),
+  ]
 
 
 class WKWebView(ui.View):
