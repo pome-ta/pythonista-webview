@@ -5,7 +5,7 @@ WKWebView - modern webview for Pythonista
 
 __version__ = '1.0'
 
-from objc_util import  *
+from objc_util import *
 import ui, console, webbrowser
 import queue, weakref, ctypes, functools, time, os, json, re
 from types import SimpleNamespace
