@@ -395,7 +395,7 @@ class WKWebView(ui.View):
         elif level == 'raw':
             print(content)
         else:
-            print(level.upper() + ': ' + content)
+            print(level.upper() + ': ' + str(content))
 
     class Theme:
 
