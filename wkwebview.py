@@ -731,9 +731,9 @@ if __name__ == '__main__':
     r.present() # Use 'panel' if you want to view console in another tab
 
     #v.disable_all()
-    v.load_html(html)
-    #v.load_url('http://omz-software.com/pythonista/',
-    #    no_cache=False, timeout=5)
+    #v.load_html(html)
+    v.load_url('http://omz-software.com/pythonista/',
+        no_cache=False, timeout=5)
     #v.load_url('file://some/local/file.html')
-    v.clear_cache()
+    #v.clear_cache()
 
